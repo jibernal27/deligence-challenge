@@ -62,13 +62,25 @@ export default class Form extends Component {
   	{
   		this.setState({flightNumber:fight+num});
   	}
-  	
   }
 
   sumbitForm(event)
   {
-  	console.log(this.state);
+  	console.log(this.state.startDate);
     event.preventDefault();
+
+    Meteor.call('flightstats.status', {
+  	carrier: this.state.flightNumber.substring(0,2),
+  	flight: parseInt(this.state.flightNumber.substring(2,this.state.flightNumber.length)),
+  	year:this.state.startDate.get('year'),
+  	month:this.state.startDate.get('month')+1,
+  	day:this.state.startDate.get('date')}, (err, res) => {
+  	if (err) {month
+    alert(err);
+  	} else {
+     console.log(res);
+  	}
+		});
   }
 
   render() {
