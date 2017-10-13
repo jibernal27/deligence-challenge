@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 
 import Form from './Form.jsx';
 import Result from './Result.jsx'; 
+import ReservesWrapper from './ReservesWrapper.jsx';
 // App component - represents the whole app
 export default class App extends Component {
   constructor(props){
@@ -43,6 +44,7 @@ export default class App extends Component {
           <h1>Wheelchair reservation</h1>
         </header>
         <Form callbackFromparent={this.disPlayResults.bind(this)} changeLoading={this.changeLoading.bind(this)}/>
+        <ReservesWrapper/>
         {load}
       </div>
     );

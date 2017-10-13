@@ -1,3 +1,4 @@
+
 var url="https://api.flightstats.com/flex/flightstatus/rest/v2/json/flight/status/{carrier}/{number}/dep/{year}/{month}/{day}";
 
 Meteor.methods({
@@ -17,5 +18,27 @@ Meteor.methods({
       return false;
     }
 
-  }
+  },
+
+  'reserveChair.reserve'({date,flight,airportCode})
+  {
+    this.unblock();
+
+    var can=Reserves.find({date:date,flight:flight,airportCode:airportCode}).count();
+    if (can==0)
+    {
+          Reserves.insert({date:date,flight:flight,airportCode:airportCode,createdAt:new Date()});
+    }
+  },
+
+    'reserveChair.delete'({date,flight,airportCode})
+  {
+    this.unblock();
+
+    var can=Reserves.find({date:date,flight:flight,airportCode:airportCode}).count();
+    if (can!=0)
+    {
+          Reserves.remove({date:date,flight:flight,airportCode:airportCode});
+    }
+  },
 });
