@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
 import moment from 'moment';
 import {Reserves} from '../api/reserves.js';
+/** Flight component - represents a flight with departure and arrival */
 export default class Flight extends Component {
 	
- 
-
-
+ /**
+ * Formtas a flight numer from a codeshare
+ * @param {dict} codeshare -The dict with the carrier and number
+ */
 	codeshareName(codeshare)
 	{
 		return codeshare.fsCode+codeshare.flightNumber;
@@ -23,12 +25,7 @@ export default class Flight extends Component {
 		}
 		return rta;
 	}
-
-	reserve()
-	{
-		console.log("works")
-	}
-
+/** Renders the componenet displaying departure and arrival information.*/
 	render()
 	{
 

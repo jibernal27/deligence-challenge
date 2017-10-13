@@ -6,6 +6,10 @@ Reserves.deny({
   remove() { return true; },
 })
 
+/**
+ * Publishes the reservations of the current user. 
+ */
+
 Meteor.publish("allReservations",function(){
 	return Reserves.find({owner:this.userId});
 });

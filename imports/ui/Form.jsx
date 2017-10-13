@@ -3,14 +3,22 @@ import DatePicker from 'react-datepicker';
 import moment from 'moment';
  
 require('react-datepicker/dist/react-datepicker.css')
+/** Form component - represents the form for the flight API consultation */
 
 export default class Form extends Component {
 
- 
+/** Renders the componenet displaying departure and arrival information
+ *@constructor
+ * Allows to store a moment.js for the date and the flight number
+ */
   constructor(props){
     super(props);
     this.state={startDate: moment(),flightNumber:""};
   }
+/**
+ * Stores the date 
+ * @param {moment} date - The date provided as a moment from react-calendar.
+ */
 
   handleChange(date)
   {
@@ -18,6 +26,10 @@ export default class Form extends Component {
       startDate: date
     });
   }
+ /**
+ * Checks that a flight number has a correct format
+ * @param {String} data - The flight number. 
+ */ 
   checkFlight(data)
   {
   	var input=data.target.value;
@@ -53,7 +65,7 @@ export default class Form extends Component {
   		
   	}
   }
-
+/** Formats the las 4 numbers of the flight number*/
   unblur()
   {
   	var fight=this.state.flightNumber.substring(0,2)
@@ -63,7 +75,7 @@ export default class Form extends Component {
   		this.setState({flightNumber:fight+num});
   	}
   }
-
+/** Sumbits the from for the API consultation, cheks flight number format*/
   sumbitForm(event)
   {
     event.preventDefault();
@@ -102,7 +114,7 @@ export default class Form extends Component {
 
 
   }
-
+/** Render the form and the calendar with the specifications required*/
   render() {
     return (
     	<div className="form-input">

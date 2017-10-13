@@ -15,7 +15,14 @@ const DayCheck = Match.Where((x) => {
 
 
 Meteor.methods({
-
+/**
+ * Consults the API of the fligths
+ * @param {Alpanumeric String} carrier - The flight carrier.  
+ * @param {Integer} flight - The flight number. 
+ * @param {Integer} year -The year to consult. 
+ * @param {Integer} month - The month to consult. 
+ * @param {Integer} day - The dat to consult. 
+ */
   'flightstats.status'({carrier,flight,year,month,day}){
     this.unblock();
     try {
@@ -36,6 +43,13 @@ Meteor.methods({
     }
 
   },
+
+/**
+ * Inserts in the collection of reserves a reserve for the current user.
+ * @param {Date} date - The date of the reservation.  
+ * @param {String} flight - The flight of the reservation. 
+ * @param {String} airportCode -The airport of the reservation.  
+ */
 
   'reserveChair.reserve'({date,flight,airportCode})
   {
@@ -58,6 +72,12 @@ Meteor.methods({
     
     
   },
+/**
+ * Deletes from the collection of reserves a reserve for the current user.
+ * @param {Date} date - The date of the reservation.  
+ * @param {String} flight - The flight of the reservation. 
+ * @param {String} airportCode -The airport of the reservation.  
+ */
 
     'reserveChair.delete'({date,flight,airportCode})
   {

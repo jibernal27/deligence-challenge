@@ -7,23 +7,28 @@ import ReservesWrapper from './ReservesWrapper.jsx';
 import AccountsUIWrapper from './AccountsUIWrapper.jsx';
 import { createContainer } from 'meteor/react-meteor-data';
 
-// App component - represents the whole app
+/** App component - represents the whole app */
  class App extends Component {
   constructor(props){
     super(props);
     this.state={loading:false,data:null};
   }
 
+/** Toggles  loading  . */
 
   changeLoading()
   {
     this.setState({loading:!this.state.loading});
   }
-
+/**
+ * Changes the state with the result of the API
+ * @param {JSON} data -The result of the API
+ */
   disPlayResults(data)
   {
     this.setState({data:data});
   }
+/**  Shows the loading message while the data is retrived from the API. */
 
   displayLoading()
   {
@@ -37,6 +42,7 @@ import { createContainer } from 'meteor/react-meteor-data';
     }
 
   }
+/** Renders the compoenent. Ensures that only logged users are the only ones able to use the application */
 
  
   render() {

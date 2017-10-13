@@ -1,6 +1,11 @@
 import React, { Component } from 'react';
 import Flight from './Flight.jsx';
+/** Result component -Parses the results of the API and renders all the fligths */
+
 export default class Result extends Component {
+  /** Parses the information of the API
+ *@constructor
+ */
 	constructor(props){
     super(props);
     
@@ -21,6 +26,11 @@ export default class Result extends Component {
     this.state={flight:flight,airports:airports,status:status,count:0,childrenEstates:childrenEstates};
   }
 
+/**
+ * Changes the selection of an airport to ensure only two are selected. 
+ * @param {boolean} arrival - If the selected status filght is from an arrival. 
+ * @param {integer} key - The position of the flight status in the flightstatus of the state. 
+ */
   selectedChildren(arrival,key)
   {
 
@@ -122,6 +132,7 @@ export default class Result extends Component {
   	}
   }
 
+/** Renders all the fligth status in FLight components*/
 	render()
 	{
 		return (
