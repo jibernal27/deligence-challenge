@@ -1,1 +1,9 @@
 /* CSS declarations go here */
+.flight{
+	border-style: solid;
+    border-color: red;
+}
+.departure, .arrival{
+	border-style: solid;
+    border-color: black;
+}

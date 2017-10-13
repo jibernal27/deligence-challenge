@@ -8,7 +8,7 @@ Meteor.methods({
 
       var urlAct=url.replace("{carrier}",carrier).replace("{number}",flight).replace("{year}",year).replace("{month}",month).replace("{day}",day);
       const result = HTTP.call('GET',urlAct, {
-        params: { appId: process.env.APP_ID,appKey:process.env.APP_KEY }
+        params: { appId: process.env.APP_ID_FLI,appKey:process.env.APP_KEY_FLI }
       });
       return result;
     } catch (e) {
