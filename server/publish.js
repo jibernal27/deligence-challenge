@@ -7,5 +7,5 @@ Reserves.deny({
 })
 
 Meteor.publish("allReservations",function(){
-	return Reserves.find();
+	return Reserves.find({owner:this.userId});
 });

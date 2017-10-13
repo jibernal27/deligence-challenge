@@ -4,8 +4,11 @@ import React, { Component } from 'react';
 import Form from './Form.jsx';
 import Result from './Result.jsx'; 
 import ReservesWrapper from './ReservesWrapper.jsx';
+import AccountsUIWrapper from './AccountsUIWrapper.jsx';
+import { createContainer } from 'meteor/react-meteor-data';
+
 // App component - represents the whole app
-export default class App extends Component {
+ class App extends Component {
   constructor(props){
     super(props);
     this.state={loading:false,data:null};
@@ -19,7 +22,6 @@ export default class App extends Component {
 
   disPlayResults(data)
   {
-    console.log(data);
     this.setState({data:data});
   }
 
@@ -35,18 +37,34 @@ export default class App extends Component {
     }
 
   }
+
  
   render() {
-    var load=this.displayLoading()
+
+    var load=this.displayLoading();
+
     return (
       <div className="container">
         <header>
           <h1>Wheelchair reservation</h1>
         </header>
+        <AccountsUIWrapper />
+      {this.props.currentUser ?
+      <div>
         <Form callbackFromparent={this.disPlayResults.bind(this)} changeLoading={this.changeLoading.bind(this)}/>
         <ReservesWrapper/>
         {load}
+      </div> :''
+       }
       </div>
     );
   }
 }
+
+export default createContainer(() => {
+ 
+
+  return {
+    currentUser: Meteor.user(),
+  };
+}, App);

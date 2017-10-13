@@ -24,21 +24,28 @@ Meteor.methods({
   {
     this.unblock();
 
-    var can=Reserves.find({date:date,flight:flight,airportCode:airportCode}).count();
+    var can=Reserves.find({owner:Meteor.userId(),date:date,flight:flight,airportCode:airportCode}).count();
     if (can==0)
     {
-          Reserves.insert({date:date,flight:flight,airportCode:airportCode,createdAt:new Date()});
-    }
+      if (Meteor.userId())
+      {
+          Reserves.insert({owner:Meteor.userId(),date:date,flight:flight,airportCode:airportCode,createdAt:new Date()});
+      }
+      }
+    
   },
 
     'reserveChair.delete'({date,flight,airportCode})
   {
     this.unblock();
 
-    var can=Reserves.find({date:date,flight:flight,airportCode:airportCode}).count();
+    var can=Reserves.find({owner:Meteor.userId(),date:date,flight:flight,airportCode:airportCode}).count();
     if (can!=0)
     {
-          Reserves.remove({date:date,flight:flight,airportCode:airportCode});
+            if (Meteor.userId())
+      {
+          Reserves.remove({owner:Meteor.userId(),date:date,flight:flight,airportCode:airportCode});
+        }
     }
   },
 });

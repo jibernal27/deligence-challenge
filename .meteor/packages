@@ -21,3 +21,5 @@ shell-server@0.2.4            # Server-side component of the `meteor shell` comm
 momentjs:moment
 http
 react-meteor-data
+accounts-ui
+accounts-password
