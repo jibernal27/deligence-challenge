@@ -139,8 +139,10 @@ export default class Result extends Component {
 			<div className="results">
 			<h1> Search results</h1>
 			{this.state.status.map((item,index)=> (
+        <div className="fligth-ind">
 				<Flight data={item} airpots={this.state.airports} flyname={this.state.flight} key={index} index={index} statesEn={this.state.childrenEstates[index]} selectedChildren={this.selectedChildren.bind(this)}/>
-				))}
+				</div>
+        ))}
 			</div>
 			)
 	}

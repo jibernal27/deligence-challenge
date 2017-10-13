@@ -29,8 +29,8 @@ import moment from 'moment';
  			{this.props.reserves.map((data,index)=>
  				(
  				<div className="reserve-list" key={index}>	
-			    <h5 > {moment(data.createdAt).format('DDMMMYYYY kk:mm')} {data.airportCode} {data.flight} {moment(data.date).format('DDMMMYYYY kk:mm')} </h5>
- 				<button onClick={()=>this.deleteOne(index)}> Delete </button>
+			    <h5 className="inline"> {moment(data.createdAt).format('DDMMMYYYY kk:mm')} {data.airportCode} {data.flight} {moment(data.date).format('DDMMMYYYY kk:mm')} </h5>
+ 				<button className="inline" onClick={()=>this.deleteOne(index)}> Delete </button>
  				</div>
  				))}
  			</div>

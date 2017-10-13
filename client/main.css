@@ -2,8 +2,19 @@
 .flight{
 	border-style: solid;
     border-color: red;
+    
 }
 .departure, .arrival{
 	border-style: solid;
     border-color: black;
+    float:left;
+}
+.inline
+{
+	float:left;
+
+}
+.results ,.fligth-ind
+{
+	clear:both;
 }
